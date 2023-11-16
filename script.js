@@ -7,25 +7,31 @@ function draw() {
 	background(100, 100, 100);
 
 	for (let i = 0; i < circles.length; i++) {
-		circle(circles[i].x, circles[i].y, 50);
-		applyPhysics(circles[i]);
+		circles[i].draw();
+		circles[i].update();
 	}
 }
 
 function mouseClicked() {
-	let newCircle = {
-		x: mouseX,
-		y: mouseY,
-		speed: 0,
-	};
-	circles.push(newCircle);
+	let b = new Ball(mouseX, mouseY);
+	circles.push(b);
 }
 
-function applyPhysics(c) {
-	c.speed = c.speed + 0.2;
-	c.y = c.y + c.speed;
-	if (c.y > height - 25) {
-		c.y = height - 25;
-		c.speed = c.speed * -0.7;
+class Ball {
+	speed = 0;
+	constructor(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+	draw() {
+		circle(this.x, this.y, 50);
+	}
+	update() {
+		this.speed = this.speed + 0.2;
+		this.y = this.y + this.speed;
+		if (this.y > height - 25) {
+			this.y = height - 25;
+			this.speed = this.speed * -0.7;
+		}
 	}
 }

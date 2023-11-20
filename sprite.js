@@ -25,4 +25,15 @@ class Sprite {
 			this.y = 0;
 		}
 	}
+	isColliding(otherSprite) {
+		let deltaX = this.x - otherSprite.x;
+		let deltaY = this.y - otherSprite.y;
+		let dist = sqrt(sq(deltaX) + sq(deltaY));
+
+		if (dist < this.size / 2 + otherSprite.size / 2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

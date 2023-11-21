@@ -9,7 +9,7 @@ class Ship extends Sprite {
 	}
 	draw() {
 		stroke(255);
-		noFill();
+		fill(255);
 
 		push();
 
@@ -18,7 +18,7 @@ class Ship extends Sprite {
 		triangle(0, -15, -10, 10, 10, 10);
 
 		pop();
-
+		noFill();
 		stroke(255, 0, 0);
 		circle(this.x, this.y, this.size);
 	}
